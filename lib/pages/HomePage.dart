@@ -14,19 +14,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+    //controller for input field
+    late TextEditingController controller;
+
+    @override
+    void initState(){
+      super.initState();
+
+      controller = TextEditingController();
+    }
+
+    @override
+    void dispose(){
+      controller.dispose();
+
+      super.dispose();
+    }
+
+
+
 
   //list of todo Items
-  List toDoList = [
-    ["Make Tutorial", false],
-    ["Exercise", false]
-
+  List toDoList = 
+  [
+    ["Make a todo app", false],
   ];
 
 
   //checkbox change method
   void CheckBoxChanged(bool? value, int index){
     setState(() {
-      toDoList[index][1]= value!;
+      toDoList[index][1]= !toDoList[index][1];
     });
   }
   @override
@@ -43,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          
+          DialogBox(context);
         },
 
 
@@ -62,5 +80,40 @@ class _HomePageState extends State<HomePage> {
         }
       )
     );
+  }
+
+  // ignore: non_constant_identifier_names
+  Future<dynamic> DialogBox(BuildContext context) {
+    return showDialog(context: context, builder: (context) =>  AlertDialog(
+          title : const Text('Add New Task'),
+          content: TextField(
+            autofocus: true,
+            controller: controller,
+            decoration: const InputDecoration(hintText: "Enter your task", border: OutlineInputBorder(borderRadius: BorderRadius.horizontal()))),
+          actions: [
+            TextButton(
+              //SUBMIT  BUTTON
+              child: const Text("SUBMIT"),
+              onPressed: () 
+              {
+                toDoList.add([controller.text, false]);
+                //close the dialog
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              //CANCEL BUTTON
+              child: const Text("CANCEL"),
+              onPressed: () 
+              {
+                //close the dialog
+                Navigator.of(context).pop();
+              },
+            )
+
+
+          ],
+          ),
+        );
   }
 }
