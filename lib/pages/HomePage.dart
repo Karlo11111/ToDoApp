@@ -3,7 +3,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:todoapp/ToDoTile.dart';
+import 'package:todoapp/Utilities/ToDoTile.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -14,6 +14,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  //list of todo Items
+  List toDoList = [
+    ["Make Tutorial", false],
+    ["Exercise", false]
+
+  ];
+
+
+  //checkbox change method
+  void CheckBoxChanged(bool? value, int index){
+    setState(() {
+      toDoList[index][1]= value!;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +39,28 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         toolbarHeight: 70,
       ),
+
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: (){
+        onPressed: () {
           
         },
 
+
       ),
 
-
-
-      body: const ToDoTile(),
+      body: ListView.builder(
+        itemCount: toDoList.length,
+        itemBuilder:(context , index){
+          return ToDoTile(
+            taskName: toDoList[index][0], 
+            taskCompleted: toDoList[index][1], 
+            onChanged: (value) {
+              CheckBoxChanged(value, index);
+            },
+          );
+        }
+      )
     );
   }
 }
