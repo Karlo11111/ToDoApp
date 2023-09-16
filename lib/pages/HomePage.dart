@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("TO DO APP"),
         elevation: 0,
         centerTitle: true,
-        toolbarHeight: 60,
+        toolbarHeight: 70,
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
