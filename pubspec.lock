@@ -75,6 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  hold_on_pop:
+    dependency: "direct main"
+    description:
+      name: hold_on_pop
+      sha256: "4c2ae33d08d3f9c55c4ed73b00c6b301370bb7301da6028213da6a72f611aab0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   lints:
     dependency: transitive
     description:
@@ -186,3 +194,4 @@ packages:
     version: "0.1.4-beta"
 sdks:
   dart: ">=3.1.1 <4.0.0"
+  flutter: ">=1.17.0"
