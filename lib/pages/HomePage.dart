@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:todoapp/Utilities/ToDoTile.dart';
 
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -32,12 +33,10 @@ class _HomePageState extends State<HomePage> {
     }
 
 
-
-
   //list of todo Items
-  List toDoList = 
+  static List toDoList = 
   [
-    ["Make a todo app", false],
+    
   ];
 
 
@@ -66,10 +65,11 @@ class _HomePageState extends State<HomePage> {
 
 
       ),
-
+      
       body: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder:(context , index){
+          
           return ToDoTile(
             taskName: toDoList[index][0], 
             taskCompleted: toDoList[index][1], 
@@ -96,7 +96,12 @@ class _HomePageState extends State<HomePage> {
               child: const Text("SUBMIT"),
               onPressed: () 
               {
-                toDoList.add([controller.text, false]);
+                setState(() {
+                  toDoList.add([controller.text, false]);
+                  
+                  controller.clear();
+                });
+                
                 //close the dialog
                 Navigator.of(context).pop();
               },
@@ -106,6 +111,9 @@ class _HomePageState extends State<HomePage> {
               child: const Text("CANCEL"),
               onPressed: () 
               {
+                setState(() {
+                  controller.clear();
+                });
                 //close the dialog
                 Navigator.of(context).pop();
               },
