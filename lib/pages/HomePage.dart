@@ -76,6 +76,11 @@ class _HomePageState extends State<HomePage> {
             onChanged: (value) {
               CheckBoxChanged(value, index);
             },
+            deleteFunction: (p0) {
+              setState(() {
+               toDoList.length = toDoList.length - 1;
+              });
+            },
           );
         }
       )
