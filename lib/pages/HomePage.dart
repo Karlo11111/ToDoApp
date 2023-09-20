@@ -37,6 +37,8 @@ class _HomePageState extends State<HomePage> {
   static List toDoList = 
   [
     
+
+    
   ];
 
 
@@ -97,7 +99,6 @@ class _HomePageState extends State<HomePage> {
             decoration: const InputDecoration(hintText: "Enter your task", border: OutlineInputBorder(borderRadius: BorderRadius.horizontal()))),
           actions: [
             TextButton(
-              //SUBMIT  BUTTON
               child: const Text("SUBMIT"),
               onPressed: () 
               {
@@ -110,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                 //close the dialog
                 Navigator.of(context).pop();
               },
+              //SUBMIT  BUTTON
             ),
             TextButton(
               //CANCEL BUTTON
@@ -123,7 +125,6 @@ class _HomePageState extends State<HomePage> {
                 Navigator.of(context).pop();
               },
             )
-
 
           ],
           ),
