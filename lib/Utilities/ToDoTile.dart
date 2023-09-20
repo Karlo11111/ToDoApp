@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 // ignore: must_be_immutable
-class ToDoTile extends StatelessWidget {
+class ToDoTile extends StatefulWidget {
   final String taskName;
   final bool taskCompleted;
   Function(bool?)? onChanged; 
@@ -22,9 +22,23 @@ class ToDoTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  State<ToDoTile> createState() => _ToDoTileState();
+}
 
-      
+class _ToDoTileState extends State<ToDoTile> {
+
+  void _showDatePicker(){
+    showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2020), 
+      lastDate: DateTime(2025)
+      );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
       return Padding(
       padding: const EdgeInsets.only(right: 25, left: 25, top: 25, bottom: 12.5),
         child: Slidable(
@@ -32,7 +46,7 @@ class ToDoTile extends StatelessWidget {
             motion: const StretchMotion(), 
             children: [
               SlidableAction(
-                onPressed: deleteFunction,
+                onPressed: widget.deleteFunction,
                 icon: Icons.delete,
                 backgroundColor: Colors.red,
                 )
@@ -43,16 +57,25 @@ class ToDoTile extends StatelessWidget {
             decoration: BoxDecoration(color: Colors.blue[200]),
             
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //checkbox
-                Checkbox(value: taskCompleted, onChanged: onChanged,
+                Checkbox(value: widget.taskCompleted, onChanged: widget.onChanged,
                 checkColor: Colors.black,
                 ),
                 //task name
-                Text(
-                  taskName, 
-                  style: TextStyle(decoration: taskCompleted ? TextDecoration.lineThrough : TextDecoration.none, fontSize: 25),
+                Expanded(
+                  child: Text(
+                    widget.taskName, 
+                    style: TextStyle(decoration: widget.taskCompleted ? TextDecoration.lineThrough : TextDecoration.none, fontSize: 20),
+                  ),
                 ),
+                MaterialButton(
+                  color: Colors.white,
+                  onPressed: _showDatePicker,
+                  child: const Text("REMIND", style: TextStyle(fontSize: 15),),
+                )
               ],
             ),
             ),
@@ -60,7 +83,4 @@ class ToDoTile extends StatelessWidget {
        ); 
    
   }
-
-
- 
 }

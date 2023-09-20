@@ -103,9 +103,16 @@ class _HomePageState extends State<HomePage> {
               onPressed: () 
               {
                 setState(() {
-                  toDoList.add([controller.text, false]);
+                  if(controller.text == "" || controller.text == " " || controller.text == "  " || controller.text == "    ")
+                  {
+                    
+                  }
+                  else{
+                    toDoList.add([controller.text, false]);
                   
-                  controller.clear();
+                    controller.clear();
+                  }
+                  
                 });
                 
                 //close the dialog
