@@ -72,9 +72,10 @@ class _ToDoTileState extends State<ToDoTile> {
                   ),
                 ),
                 MaterialButton(
+                  minWidth: 1,
                   color: Colors.white,
                   onPressed: _showDatePicker,
-                  child: const Text("REMIND", style: TextStyle(fontSize: 15),),
+                  child: const Icon(Icons.notifications),
                 )
               ],
             ),

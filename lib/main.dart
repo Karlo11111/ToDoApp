@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/pages/HomePage.dart';
+import 'package:todoapp/pages/auth_screen.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
 
+  FirebaseUIAuth.configureProviders([
+    EmailAuthProvider(),
+    GoogleProvider(clientId: "Your client ID here")
+  ]);
 
-void main() {
   runApp(const MyApp());
 }
 
@@ -11,10 +23,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),   
-      theme: ThemeData(primaryColor: Color.fromARGB(255, 14, 102, 173)),   
+      home: LoginPage(),   
     );
   }
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "90761896525",
+    "firebase_url": "https://flutter-sign-in-530b5-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "flutter-sign-in-530b5",
+    "storage_bucket": "flutter-sign-in-530b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90761896525:android:f890c8f6cd6f58f71cb204",
+        "android_client_info": {
+          "package_name": "com.example.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90761896525-2272uvgjvcd1m99j30k8kbeqfkhi8otm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC10EWlemSbNfMxOfrpUMnD221SoGfx8R8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90761896525-2272uvgjvcd1m99j30k8kbeqfkhi8otm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "90761896525-8nevhu8sult1asv847f3tcf0mui9unk4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.todoapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
